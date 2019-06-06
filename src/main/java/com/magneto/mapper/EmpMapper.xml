@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.magneto.mapper.EmpMapper">
+
+<!--雇员登陆-->
+<select id="login" parameterType="emp" resultType="int">
+      select count(*) from emp where name = #{name} and password = #{password}
+    </select>
+
+<!--查询全部雇员信息-->
+<select id="selectAll" resultType="com.magneto.pojo.Emp">
+      select * from emp
+    </select>
+
+<!--根据指定的条件查询雇员信息列表-->
+<select id="selectByKey" resultType="com.magneto.pojo.Emp">
+    select * from emp
+    <where>
+        <if test="key=='eid'">and eid = #{value}</if>
+        <if test="key=='did'">and did = #{value}</if>
+        <if test="key=='lid'">and lid = #{value}</if>
+        <if test="key=='heid'">and heid = #{value}</if>
+        <if test="key=='name'">and name like concat('%',#{value},'%') </if>
+        <if test="key=='password'">and password like concat('%',#{value},'%')</if>
+        <if test="key=='phone'">and phone like concat('%',#{value},'%')</if>
+        <if test="key=='salary'">and salary = #{value}</if>
+        <if test="key=='note'">and note like concat('%',#{value},'%')</if>
+        <if test="key=='aflag'">and aflag = #{value}</if>
+        <if test="key=='sex'">and sex = #{value}</if>
+        <if test="key=='photo'">and photo like concat('%',#{value},'%')</if>
+    </where>
+</select>
+
+
+</mapper>
