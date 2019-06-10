@@ -55,7 +55,7 @@
             </div>
 
             <input class="btn btn-default" id="select" name="select" value="查询" v-on:click="submitForm()"/>
-            <input class="btn btn-default" value="添加" onclick="add()"/>
+            <input class="btn btn-default" value="添加" v-on:click="addEmp()"/>
         </div>
         <table align="center" class="table" id="content">
             <tr>
@@ -129,6 +129,9 @@
             },
             editEmp: function (event) {
                 location.href = "${pageContext.request.contextPath}/user/toUpdate.action?id=" + this.id;
+            },
+            addEmp: function (event) {
+                location.href="${pageContext.request.contextPath}/pages/addEmp.action"
             }
         },
 

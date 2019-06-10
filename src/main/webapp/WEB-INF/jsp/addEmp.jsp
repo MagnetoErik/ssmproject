@@ -20,75 +20,100 @@
 
 </head>
 
-<body>
+<body style="width: 90%;">
 <div id="container">
+    <h2 style="margin-left: 0.5%;margin-top: 0.5%;">添加新雇员</h2>
+    <div class="form-horizontal col-md-offset-3" style="margin-top: 1%;">
+        <div class="form-group" >
+            <label class="control-label col-md-2">雇员编号</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="请输入雇员编号" />
+            </div>
+        </div>
+        <div class="form-group col-md-offset-4">
+            <label class="control-label col-md-2">雇员姓名</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="请输入雇员姓名" />
+            </div>
+        </div>
+        <div class="form-group col-md-offset-4">
+            <label class="control-label col-md-2">
+                性别
+            </label>
+            <div class="col-md-6">
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="man" value="man" name="sex"> 男
+                </label>
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="woman" value="woman" name="sex"> 女
+                </label>
+            </div>
+        </div>
 
-    <div id="main">
-
-
-        <div class="form-inline" style="float: right">
-            <div class="form-group">
-                <label>查找条件：</label>
-                <select class="form-control" v-model="key">
-                    <option value="eid">雇员编号</option>
-                    <option value="did">部门编号</option>
-                    <option value="lid">雇员等级</option>
-                    <option value="heid">添加该雇员的人员</option>
-                    <option value="name">姓名</option>
-                    <option value="password">密码</option>
-                    <option value="phone">联系电话</option>
-                    <option value="salary">工资收入</option>
-                    <option value="aflag">管理员标记</option>
-                    <option value="sex">性别</option>
-                    <option value="photo">照片信息</option>
+        <div class="form-group col-md-offset-4">
+            <label class="control-label col-md-2">所属部门</label>
+            <div class="col-md-4">
+                <select class="form-control">
+                    <option>市场部</option>
+                    <option>人事部</option>
+                    <option>财务部</option>
+                    <option>研发部</option>
+                    <option>测试部</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label>关键字</label>：
-                <input class="form-control" v-model="value">
-            </div>
-
-            <input class="btn btn-default" id="select" name="select" value="查询" v-on:click="submitForm()"/>
-            <input class="btn btn-default" value="添加" onclick="add()"/>
         </div>
-        <table align="center" class="table" id="content">
-            <tr>
-                <td>雇员编号</td>
-                <td>姓名</td>
-                <td>联系电话</td>
-                <td>性别</td>
-                <td>基本工资</td>
-                <td>操作</td>
-            </tr>
-            <tbody>
-            <tr v-for="(emp,index) in empList">
-                <td>
-                    {{emp.eid}}
-                </td>
-                <td>
-                    {{emp.name}}
-                </td>
-                <td>
-                    {{emp.phone}}
-                </td>
-                <td>
-                    {{emp.sex}}
-                </td>
-                <td>
-                    {{emp.salary}}
-                </td>
-                <td>
-                    <button class="btn btn-warning">编辑</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <div align="center">
-            <input type="button" class="btn" onclick="" value="首页"/>
-            <input type="button" class="btn" onclick="" value="上一页"/> {{pageInfo.pageNum}}/{{pageInfo.pages}}
-            <input type="button" class="btn" onclick="" value="下一页"/>
-            <input type="button" class="btn" onclick="" value="尾页"/>
 
+        <div class="form-group col-md-offset-4">
+            <label class="control-label col-md-2">登陆密码</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="请输入登陆密码" />
+            </div>
+        </div>
+
+        <div class="form-group col-md-offset-4">
+            <label class="control-label col-md-2">联系电话</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="请输入联系电话" />
+            </div>
+        </div>
+
+
+        <div class="form-group col-md-offset-4">
+            <label class="control-label col-md-2">员工级别</label>
+            <div class="col-md-4">
+                <select class="form-control">
+                    <option>1</option>
+                    <option>1</option>
+                    <option>1</option>
+                    <option>1</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group col-md-offset-4">
+            <label class="control-label col-md-2">基本工资</label>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="请输入基本工资" />
+            </div>
+        </div>
+
+        <div class="form-group col-md-offset-4">
+            <label class="control-label col-md-2">雇员照片</label>
+            <div class="col-md-4">
+                <input type="file" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group col-md-offset-4">
+            <label class="control-label col-md-2">雇员备注</label>
+            <div class="col-md-4">
+                <textarea class="form-control"></textarea>
+            </div>
+        </div >
+        <div class="form-group col-md-offset-6">
+            <div class="col-md-8 col-md-offset-2">
+                <button class="btn btn-primary">增加</button>
+                <button class="btn btn-warning">重置</button>
+            </div>
         </div>
     </div>
 </div>
@@ -98,11 +123,7 @@
     var vm = new Vue({
         el: '#container',
         data: {
-            id: '',
-            key: '',
-            value: '',
-            pageInfo:[],
-            empList: [],
+
         },
         methods: {
             submitForm: function (event) {
@@ -125,18 +146,5 @@
                 location.href = "${pageContext.request.contextPath}/user/toUpdate.action?id=" + this.id;
             }
         },
-
-        created() {
-            $.ajax({
-                type: "post",
-                url: "${pageContext.request.contextPath}/emp/selectAll.action",
-                success: function (res) {
-                    var jsonStr = JSON.parse(res);
-                    vm.empList = jsonStr.empList;
-                    vm.pageInfo = jsonStr.pageInfo
-                    console.log(vm.pageInfo)
-                }
-            });
-        }
     });
 </script>
